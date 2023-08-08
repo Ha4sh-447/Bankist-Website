@@ -1,14 +1,5 @@
 'use strict';
 
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
-// BANKIST APP
-
-/////////////////////////////////////////////////
-// Data
-
-// DIFFERENT DATA! Contains movement dates, currency and locale
-
 const account1 = {
   owner: 'Jonas Schmedtmann',
   movements: [200, 455.23, -306.5, 25000, -642.21, -133.9, 79.97, 1300],
@@ -26,7 +17,7 @@ const account1 = {
     '2023-07-10T10:51:36.790Z',
   ],
   currency: 'EUR',
-  locale: 'pt-PT', // de-DE
+  locale: 'pt-PT', 
 };
 
 const account2 = {
@@ -51,7 +42,7 @@ const account2 = {
 
 const accounts = [account1, account2];
 
-/////////////////////////////////////////////////
+
 // Elements
 const labelWelcome = document.querySelector('.welcome');
 const labelDate = document.querySelector('.date');
@@ -78,7 +69,7 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-/////////////////////////////////////////////////
+
 // Functions
 
 const formatMovementDate = function (date) {
@@ -187,7 +178,6 @@ const startLogOutTimer = function () {
       containerApp.style.opacity = 0;
     }
 
-    // decresase 1s
     time--;
   };
   // Set time to 5 minutes
@@ -200,19 +190,12 @@ const startLogOutTimer = function () {
   return timer;
 };
 
-///////////////////////////////////////
-// Event handlers
+
 let currentAccount, timer;
-
-// FAKE ACCOUNT LOGGED IN
-// currentAccount = account1;
-// updateUI(currentAccount);
-// containerApp.style.opacity = 100;
-
 // day/month/year
 
 btnLogin.addEventListener('click', function (e) {
-  // Prevent form from submitting
+
   e.preventDefault();
 
   currentAccount = accounts.find(
@@ -334,238 +317,3 @@ btnSort.addEventListener('click', function (e) {
   displayMovements(currentAccount.movements, !sorted);
   sorted = !sorted;
 });
-
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
-// LECTURES
-
-// Converting and checking numbers
-/**
-
-// converting strings to number
-console.log(Number('23'));
-console.log(+'23'); //string to number
-
-// Parsing
-console.log(Number.parseInt('30px'));
-console.log(Number.parseInt('e23'));
-
-console.log(Number.parseFloat('2.5rem'));
-console.log(Number.parseFloat('  2.5rem  '));
-
-console.log(parseFloat('  2.5rem  '));
-
-// Check if value is NaN
-console.log(Number.isNaN(20));
-console.log(Number.isNaN('20'));
-console.log(Number.isNaN(+'20X'));
-
-// Checking if a value is  number
-console.log(Number.isFinite(20));
-console.log(Number.isFinite('20'));
-console.log(Number.isFinite(+'20X'));
-console.log(Number.isFinite(23 / 0));
-
-console.log(Number.isInteger(23));
-console.log(Number.isInteger(23.0));
- */
-/////////////////////////////////////////////////
-/**
-// Math and rounding
-console.log(Math.sqrt(25));
-console.log(125 ** (1 / 3));
-
-console.log(Math.PI);
-
-console.log(Math.trunc(Math.random() * 6) + 1);
-
-//  Get a value between the max and min value
-const randomInt = (min, max) =>
-  Math.floor(Math.random() * (max - min) + 1) + min;
-
-// Rounding integers
-console.log(Math.round(23.3));
-console.log(Math.round(23.9));
-
-console.log(Math.ceil(23.3));
-console.log(Math.ceil(23.9));
-
-console.log(Math.floor(23.3));
-console.log(Math.floor('23.9'));
-
-console.log(Math.trunc(23.3));
-
-console.log(Math.trunc(-23.3));
-console.log(Math.floor(-23.3));
-
-// Rounding decimals
-console.log((2.7).toFixed(0));
-console.log((2.7).toFixed(3));
-console.log((2.345).toFixed(2));
-console.log(+(2.345).toFixed(2));
- */
-
-///////////////////////////////////////////////
-
-/**
-// The Remainder Operator
-console.log(5 % 2);
-console.log(5 / 2); // 5 = 2 * 2 + 1
-
-console.log(8 % 3);
-console.log(8 / 3); // 8 = 2 * 3 + 2
-
-console.log(6 % 2);
-console.log(6 / 2);
-
-console.log(7 % 2);
-console.log(7 / 2);
-
-const isEven = n => n % 2 === 0;
-console.log(isEven(8));
-console.log(isEven(23));
-console.log(isEven(514));
-
-labelBalance.addEventListener('click', function () {
-  [...document.querySelectorAll('.movements__row')].forEach(function (row, i) {
-    // 0, 2, 4, 6
-    if (i % 2 === 0) row.style.backgroundColor = 'orangered';
-    // 0, 3, 6, 9
-    if (i % 3 === 0) row.style.backgroundColor = 'blue';
-  });
-});
- */
-
-///////////////////////////////////////////////
-/** 
-// Numeric separator
-const diameter = 287_460_000_000; // 287,460,000,000
-console.log(diameter); // 287460000000
-
-const price = 345_99;
-console.log(price);
-
-const transferFee1 = 15_00;
-const transferFee2 = 1_500;
-
-const PI = 3.1415;
-console.log(PI);
-
-console.log(Number('230_000')); //NaN
-console.log(parseInt('230_000')); //230
-*/
-///////////////////////////////////////////
-
-/** 
-// BigInt
-// Working with BigInt
-console.log(2 ** 53 - 1);
-console.log(Number.MAX_SAFE_INTEGER);
-console.log(2 ** 53 + 1);
-console.log(2 ** 53 + 2);
-console.log(2 ** 53 + 3);
-console.log(2 ** 53 + 4);
-
-console.log(4838430248342043823408394839483204n);
-console.log(BigInt(48384302));
-
-// Operations
-console.log(10000n + 10000n);
-console.log(36286372637263726376237263726372632n * 10000000n);
-// console.log(Math.sqrt(16n));
-
-const huge = 20289830237283728378237n;
-const num = 23;
-console.log(huge * BigInt(num));
-
-// Exceptions
-console.log(20n > 15);
-console.log(20n === 20);
-console.log(typeof 20n);
-console.log(20n == '20');
-
-console.log(huge + ' is REALLY big!!!');
-
-// Divisions
-console.log(11n / 3n);
-console.log(10 / 3);
-*/
-//////////////////////////////////////
-/** 
-// Creating a date
-const now = new Date();
-console.log(now);
-
-console.log(new Date('Aug 02 2020 18:05:41'));
-console.log(new Date('December 24, 2015'));
-console.log(new Date(account1.movementsDates[0]));
-
-console.log(new Date(2037, 10, 19, 15, 23, 5));
-console.log(new Date(2037, 10, 31));
-
-console.log(new Date(0));
-console.log(new Date(3 * 24 * 60 * 60 * 1000));
-
-// Working with date
-const future = new Date(2017, 10, 19, 15, 23);
-console.log(future);
-console.log(future.getFullYear());
-console.log(future.getMonth());
-console.log(future.getDate());
-console.log(future.getDay());
-console.log(future.getHours());
-console.log(future.getMinutes());
-console.log(future.getSeconds());
-console.log(future.toISOString()); //String in international time format
-
-// get time stamp- number of millisecond passed since unix time
-console.log(future.getTime());
-
-// creating date from time stamp
-console.log(new Date(1511085180000));
-console.log(Date.now()); //time stamp of current date
-// console.log(new Date(1689082915776));
-
-future.setFullYear(2040); //set year to 2040
-console.log(future);
-*/
-
-////////////////////////////////////////////
-
-// Operations on date
-/** 
-const future = new Date(2017, 10, 19, 15, 23);
-console.log(+future);
-
-const calcDaysPassed = (date1, date2) =>
-  Math.abs(date2 - date1) / (1000 * 60 * 60 * 24);
-
-const days1 = calcDaysPassed(new Date(2037, 3, 4), new Date(2037, 3, 14));
-console.log(days1);
-*/
-
-/////////////////////////////////////////////
-
-////////////////////////////////////////////
-// setTimeout and setInterval
-
-/**
-const ingredients = ['olives', 'spinach'];
-const pizzaTimer = setTimeout(
-  (ing1, ing2) => {
-    console.log('Here is your pizza ');
-  },
-  3000,
-  ...ingredients
-); //(callBack_function, delayTime(ms), ...arguments)
-console.log('Waiting...');
-
-// clear timer
-if (ingredients.includes('spinach')) clearTimeout(pizzaTimer);
-
-// setInterval
-setInterval(function () {
-  const now = new Date();
-  console.log(now);
-}, 1000);
- */
